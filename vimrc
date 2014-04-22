@@ -18,7 +18,7 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	set statusline=%F	" show full filepath in statusline
 	set ignorecase
 	set smartcase
-" Highlights 
+" 	Highlights 
 	highlight CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 	highlight CursorColumn cterm=NONE ctermbg=blue ctermfg=white
 	highlight TabLine cterm=NONE ctermbg=blue ctermfg=white
@@ -58,11 +58,16 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	autocmd FileType python noremap <buffer> , :s/^/#/<CR>
 	autocmd FileType python noremap <buffer> <F9> :!python %<CR>
 	autocmd FileType python noremap <buffer> [20;2~ :!python -i %<CR>
+	autocmd FileType python setlocal smartindent cinwords=if,elif,else,for,while,dry,except,finally,def,class
 	autocmd FileType c noremap <buffer> , :s/^/\/\//<CR>
 	autocmd FileType c noremap <buffer> ; :s/^\/\///<CR>
+	autocmd FileType c noremap <buffer> <F9> :make<CR>
+	autocmd FileType c noremap <buffer> <S-F9> :make<CR> :!./%<<CR>
+	autocmd FileType c noremap <buffer> <C-F9> :make<CR> :!./%< 
 	autocmd FileType vim noremap <buffer> <F9> :source %<CR>
 	autocmd FileType vim noremap <buffer> , :s/^/"/<CR>
 	autocmd FileType vim noremap <buffer> ; :s/^"//<CR>
+	autocmd FileType sh noremap <buffer> <F9> :!bash %<CR>
 " Keep folds when opening / closing a buffer
 "	autocmd BufWinLeave *.* mkview
 "	autocmd BufWinEnter *.* silent loadview
