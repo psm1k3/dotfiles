@@ -54,8 +54,8 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 "	Insert mappings
 	inoremap jk <Esc>l
 " FileType specific mappings
-	autocmd FileType python,php,css noremap <buffer> ; :s/^#//<CR>
-	autocmd FileType python,php,css noremap <buffer> , :s/^/#/<CR>
+	autocmd FileType python,php,css,sh noremap <buffer> ; :s/^#//<CR>
+	autocmd FileType python,php,css,sh noremap <buffer> , :s/^/#/<CR>
 	autocmd FileType python noremap <buffer> <F9> :!python %<CR>
 	autocmd FileType python noremap <buffer> [20;2~ :!python -i %<CR>
 	autocmd FileType python setlocal smartindent cinwords=if,elif,else,for,while,dry,except,finally,def,class
