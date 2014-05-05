@@ -3,7 +3,7 @@ command! Firefox :silent !firefox % &
 command! -nargs=1 -complete=file Rename :call Rename(<f-args>)
 syntax on
 au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as FileType vim (for autocommands)
-" General Settings
+""""	General Settings
 	set ts=4	" Tabsize 4 whitespaces
 	set shiftwidth=4	" shifting with < or > use 4 whitespaces
 	set incsearch
@@ -16,24 +16,29 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	set modeline
 	set laststatus=2
 	set statusline=%F	" show full filepath in statusline
+	set statusline+=\ %y " show recognized filetype
 	set ignorecase
 	set smartcase
-" 	Highlights 
+""""	Highlights 
 	highlight CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 	highlight CursorColumn cterm=NONE ctermbg=blue ctermfg=white
 	highlight TabLine cterm=NONE ctermbg=blue ctermfg=white
 	highlight TabLineFill cterm=NONE ctermbg=blue
-"	General mappings
+""""	Key mappings
+"	Normal mappings
+	nnoremap <Up> ddkP
+	nnoremap <Down> ddp
+	nnoremap <Left> <<
+	nnoremap <Right> >>
 	nnoremap j <C-PageDown>
 	nnoremap k <C-PageUp>
-	noremap . :
-	noremap ww<CR> <Esc>:w<CR>
-"	noremap <C-o> <C-w>gf
-	noremap <F2> :Rename 
-	noremap <F5> ggg?G``	" boss key (rot13)
-	noremap <C-d> <Esc>ddko
-	noremap <C-a> ggVG
-"	Normal mappings
+	nnoremap . :
+	nnoremap ww<CR> <Esc>:w<CR>
+	nnoremap <C-o> <C-w>gf
+	nnoremap <F2> :Rename 
+	nnoremap <F5> ggg?G``	" boss key (rot13)
+	nnoremap <C-d> <Esc>ddko
+	nnoremap <C-a> ggVG
 	nnoremap H ^
 	nnoremap L $
 	nnoremap <C-t> :Texplore<CR>
@@ -45,29 +50,31 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	nnoremap <C-l> <C-Right>
 	nnoremap <C-h> <C-Left>
 	nnoremap <Space> za
-"	Visual mappings
+""""	Visual mappings
 	vnoremap <Tab> >gv
 	vnoremap <S-Tab> <gv
 	vnoremap <CR> Y
-"	imap j :w .+1<CR>
-"	imap k :w .-2<CR>
-"	Insert mappings
+""""	Insert mappings
 	inoremap jk <Esc>l
-" FileType specific mappings
-	autocmd FileType python,php,css,sh noremap <buffer> ; :s/^#//<CR>
-	autocmd FileType python,php,css,sh noremap <buffer> , :s/^/#/<CR>
-	autocmd FileType python noremap <buffer> <F9> :!python %<CR>
-	autocmd FileType python noremap <buffer> [20;2~ :!python -i %<CR>
+	inoremap <C-h> <C-o>h
+	inoremap <C-j> <C-o>j
+	inoremap <C-k> <C-o>k
+	inoremap <C-l> <C-o>l
+"	FileType specific mappings
+	autocmd FileType python,php,css,sh nnoremap <buffer> ; :s/^#//<CR>
+	autocmd FileType python,php,css,sh nnoremap <buffer> , :s/^/#/<CR>
+	autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
+	autocmd FileType python nnoremap <buffer> [20;2~ :!python -i %<CR>
 	autocmd FileType python setlocal smartindent cinwords=if,elif,else,for,while,dry,except,finally,def,class
-	autocmd FileType c noremap <buffer> , :s/^/\/\//<CR>
-	autocmd FileType c noremap <buffer> ; :s/^\/\///<CR>
-	autocmd FileType c noremap <buffer> <F9> :make<CR>
-	autocmd FileType c noremap <buffer> <S-F9> :make<CR> :!./%<<CR>
-	autocmd FileType c noremap <buffer> <C-F9> :make<CR> :!./%< 
-	autocmd FileType vim noremap <buffer> <F9> :source %<CR>
-	autocmd FileType vim noremap <buffer> , :s/^/"/<CR>
-	autocmd FileType vim noremap <buffer> ; :s/^"//<CR>
-	autocmd FileType sh noremap <buffer> <F9> :!bash %<CR>
+	autocmd FileType c nnoremap <buffer> , :s/^/\/\//<CR>
+	autocmd FileType c nnoremap <buffer> ; :s/^\/\///<CR>
+	autocmd FileType c nnoremap <buffer> <F9> :make<CR>
+	autocmd FileType c nnoremap <buffer> <S-F9> :make<CR> :!./%<<CR>
+	autocmd FileType c nnoremap <buffer> <C-F9> :make<CR> :!./%< 
+	autocmd FileType vim nnoremap <buffer> <F9> :source %<CR>
+	autocmd FileType vim nnoremap <buffer> , :s/^/"/<CR>
+	autocmd FileType vim nnoremap <buffer> ; :s/^"//<CR>
+	autocmd FileType sh nnoremap <buffer> <F9> :!bash %<CR>
 " Keep folds when opening / closing a buffer
 "	autocmd BufWinLeave *.* mkview
 "	autocmd BufWinEnter *.* silent loadview
