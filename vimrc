@@ -25,6 +25,11 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	highlight TabLine cterm=NONE ctermbg=blue ctermfg=white
 	highlight TabLineFill cterm=NONE ctermbg=blue
 """"	Key mappings
+"	General mappings
+	noremap <C-k> <C-y>k
+	noremap <C-j> <C-e>j
+	noremap <C-n> :tabnew<CR>
+	noremap <C-l> <C-Right>
 "	Normal mappings
 	nnoremap <Up> ddkP
 	nnoremap <Down> ddp
@@ -44,10 +49,6 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	nnoremap <C-t> :Texplore<CR>
 	nnoremap <C-Up> <C-y>k
 	nnoremap <C-Down> <C-e>j
-	nnoremap <C-k> <C-y>k
-	nnoremap <C-j> <C-e>j
-	nnoremap <C-n> :tabnew<CR>
-	nnoremap <C-l> <C-Right>
 	nnoremap <C-h> <C-Left>
 	nnoremap <Space> za
 """"	Visual mappings
@@ -60,9 +61,11 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	inoremap <C-j> <C-o>j
 	inoremap <C-k> <C-o>k
 	inoremap <C-l> <C-o>l
+	inoremap if( if() {<CR>}<Esc>kllli
+	inoremap ( ();<Esc>hi
 "	FileType specific mappings
-	autocmd FileType python,php,css,sh nnoremap <buffer> ; :s/^#//<CR>
-	autocmd FileType python,php,css,sh nnoremap <buffer> , :s/^/#/<CR>
+	autocmd FileType python,php,css,sh noremap <buffer> ; :s/^#//<CR>
+	autocmd FileType python,php,css,sh noremap <buffer> , :s/^/#/<CR>
 	autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
 	autocmd FileType python nnoremap <buffer> [20;2~ :!python -i %<CR>
 	autocmd FileType python setlocal smartindent cinwords=if,elif,else,for,while,dry,except,finally,def,class
@@ -76,5 +79,6 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	autocmd FileType vim nnoremap <buffer> ; :s/^"//<CR>
 	autocmd FileType sh nnoremap <buffer> <F9> :!bash %<CR>
 " Keep folds when opening / closing a buffer
-"	autocmd BufWinLeave *.* mkview
-"	autocmd BufWinEnter *.* silent loadview
+	autocmd BufWinLeave *.c,*.py,*.php,*.sh mkview
+	autocmd BufWinEnter *.c,*.py,*.php,*.sh silent loadview
+
