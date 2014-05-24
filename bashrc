@@ -1,3 +1,5 @@
+source $HOME/.bashrcext
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -65,12 +67,12 @@ GREY="\[\033[0;37m\]"
 CYAN="\[\033[0;36m\]"
 
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}$GREEN\u@\h:$BLUE\w$NONE\$ "
+    PS1="$JOBCOUNT${debian_chroot:+($debian_chroot)}$GREEN\u@\h:$BLUE\w$NONE\$ "
 else # No color prompt forced
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='$JOBCOUNT${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 if [ $(id -u) -eq 0 ]; then
-    PS1="${debian_chroot:+($debian_chroot)}$RED\u@\h$NONE:$BLUE\w$NONE\$ "
+    PS1="$JOBCOUNT${debian_chroot:+($debian_chroot)}$RED\u@\h$NONE:$BLUE\w$NONE\$ "
 fi
 
 unset color_prompt force_color_prompt
@@ -99,8 +101,8 @@ fi
 # some more ls aliases
 #alias ll='ls -l'
 #alias la='ls -A'
-#alias l='ls -CF'
-alias ll='ls -lF'
+alias l='ls'
+alias ll='ls -lFh'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

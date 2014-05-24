@@ -78,6 +78,7 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	autocmd FileType vim nnoremap <buffer> , :s/^/"/<CR>
 	autocmd FileType vim nnoremap <buffer> ; :s/^"//<CR>
 	autocmd FileType sh nnoremap <buffer> <F9> :!bash %<CR>
+	autocmd FileType php nnoremap <buffer> <F9> :!php %<CR>
 " Keep folds when opening / closing a buffer
 	autocmd BufWinLeave *.c,*.py,*.php,*.sh mkview
 	autocmd BufWinEnter *.c,*.py,*.php,*.sh silent loadview
