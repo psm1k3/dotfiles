@@ -30,6 +30,8 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	noremap <C-j> <C-e>j
 	noremap <C-n> :tabnew<CR>
 	noremap <C-l> <C-Right>
+	noremap H ^
+	noremap L $
 "	Normal mappings
 	nnoremap <Up> ddkP
 	nnoremap <Down> ddp
@@ -39,13 +41,12 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	nnoremap k <C-PageUp>
 	nnoremap . :
 	nnoremap ww<CR> <Esc>:w<CR>
+	nnoremap wwq<CR> <Esc>:wq<CR>
 	nnoremap <C-o> <C-w>gf
 	nnoremap <F2> :Rename 
 	nnoremap <F5> ggg?G``	" boss key (rot13)
 	nnoremap <C-d> <Esc>ddko
 	nnoremap <C-a> ggVG
-	nnoremap H ^
-	nnoremap L $
 	nnoremap <C-t> :Texplore<CR>
 	nnoremap <C-Up> <C-y>k
 	nnoremap <C-Down> <C-e>j
@@ -68,9 +69,10 @@ au BufNewFile,BufRead *vimrc* setf vim	" If filename matches 'vimrc' treat it as
 	autocmd FileType python,php,css,sh noremap <buffer> , :s/^/#/<CR>
 	autocmd FileType python nnoremap <buffer> <F9> :!python %<CR>
 	autocmd FileType python nnoremap <buffer> [20;2~ :!python -i %<CR>
+	autocmd FileType php,c inoremap if( if() {<CR>}<Esc>kllli
 	autocmd FileType python setlocal smartindent cinwords=if,elif,else,for,while,dry,except,finally,def,class
-	autocmd FileType c nnoremap <buffer> , :s/^/\/\//<CR>
-	autocmd FileType c nnoremap <buffer> ; :s/^\/\///<CR>
+	autocmd FileType c noremap <buffer> , :s/^/\/\//<CR>
+	autocmd FileType c noremap <buffer> ; :s/^\/\///<CR>
 	autocmd FileType c nnoremap <buffer> <F9> :make<CR>
 	autocmd FileType c nnoremap <buffer> <S-F9> :make<CR> :!./%<<CR>
 	autocmd FileType c nnoremap <buffer> <C-F9> :make<CR> :!./%< 
