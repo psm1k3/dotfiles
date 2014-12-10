@@ -1,8 +1,14 @@
 #!/bin/bash
 
 if [ -f $HOME/.vimrc ]; then
-	mv $HOME/.vimrc $HOME/.vimrc.bak
+	mv -i $HOME/.vimrc $HOME/.vimrc.bak
 fi
 if [ -f `pwd`/vimrc ]; then
-	ln -s `pwd`/vimrc $HOME/.vimrc
+	ln -si `pwd`/vimrc $HOME/.vimrc
+fi
+
+if [ -d $HOME/.vim ]; then
+    ln -si ./dotvim/autoload $HOME/.vim/autoload
+    ln -si ./dotvim/bundle $HOME/.vim/autoload
+    ln -si ./dotvim/colors $HOME/.vim/colors
 fi
