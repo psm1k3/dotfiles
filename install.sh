@@ -11,5 +11,5 @@ if [ ! -d $HOME/.vim ]; then
     mkdir $HOME/.vim
 fi
 ln -si `pwd`/dotvim/autoload $HOME/.vim/autoload
-ln -si `pwd`/dotvim/bundle $HOME/.vim/autoload
+ln -si `pwd`/dotvim/bundle $HOME/.vim/bundle
 ln -si `pwd`/dotvim/colors $HOME/.vim/colors
