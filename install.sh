@@ -7,8 +7,9 @@ if [ -f `pwd`/vimrc ]; then
 	ln -si `pwd`/vimrc $HOME/.vimrc
 fi
 
-if [ -d $HOME/.vim ]; then
-    ln -si ./dotvim/autoload $HOME/.vim/autoload
-    ln -si ./dotvim/bundle $HOME/.vim/autoload
-    ln -si ./dotvim/colors $HOME/.vim/colors
+if [ ! -d $HOME/.vim ]; then
+    mkdir $HOME/.vim
 fi
+ln -si ./dotvim/autoload $HOME/.vim/autoload
+ln -si ./dotvim/bundle $HOME/.vim/autoload
+ln -si ./dotvim/colors $HOME/.vim/colors
