@@ -1,0 +1,19 @@
+Recompile vim with python support
+
+Install dependencies:
+# sudo apt-get install python-dev
+# sudo apt-get install ruby-dev
+
+Get sources:
+# git clone https://github.com/b4winckler/vim
+
+Configure:
+# ./configure --enable-pythoninterp --with-features=huge --prefix=/opt/vim --with-python-config-dir=/usr/lib/python2.7/config
+# make
+# ./vim --version
+# make install
+# /opt/vim/bin/vim --version
+# ln -s /opt/vim/bin/vim /usr/bin/vim
+# ln -s /opt/vim/bin/vim /usr/bin/vi
+# vi
+
